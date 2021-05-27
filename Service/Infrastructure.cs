@@ -29,6 +29,7 @@ namespace Service
         public static List<string> Search(List<Rule> rules, in int N)
         {
             List<string> result = new List<string>() { rules[0].Name };
+            List<string> words = new List<string>();
             for (int i = 0; i < N; i++)
             {
                 List<string> temp = new List<string>();
@@ -40,10 +41,19 @@ namespace Service
                             AddChilder(rules, result[j],k,temp);
                     }
                 }
+                foreach (var item in result)
+                {
+                    if(item.IsLower())
+                        words.Add(item);
+                }
                 result = temp;
             }
-            result = result.Distinct().ToList();//убираем повторяющиеся слова           
-            return result.Where(x=>x.IsLower()).ToList();
+            foreach (var item in result)
+            {
+                if (item.IsLower())
+                    words.Add(item);
+            }
+            return words.Distinct().ToList();
         }        
         private static void AddChilder(List<Rule> rules, string word,int index,List<string> res)
         {

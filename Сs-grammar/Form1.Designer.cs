@@ -64,7 +64,7 @@ namespace Сs_grammar
             this.textBox2.Location = new System.Drawing.Point(646, 90);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(157, 151);
+            this.textBox2.Size = new System.Drawing.Size(371, 314);
             this.textBox2.TabIndex = 3;
             // 
             // label2
