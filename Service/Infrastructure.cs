@@ -10,10 +10,10 @@ namespace Service
     {
         public static List<Rule> FillList(string[] arr)
         {
-            List <Rule>res= new List<Rule>();
+            List<Rule> res = new List<Rule>();
             for (int i = 0; i < arr.Length; i++)
             {
-                res.Add(new Rule { Name = arr[i].Split(' ').First(), Rules=AddRules(arr[i].Split(' ')) });
+                res.Add(new Rule { Name = arr[i].Split(' ').First(), Rules = AddRules(arr[i].Split(' ')) });
             }
             return res;
         }
@@ -26,19 +26,34 @@ namespace Service
             }
             return res;
         }
-        public static List<string> Search(List<Rule> rules,in int N)
+        public static List<string> Search(List<Rule> rules, in int N)
         {
-            TreeNode<string> tree;
+            List<string> result = new List<string>() { rules[0].Name };
             for (int i = 0; i < N; i++)
             {
-                tree = new TreeNode<string>(rules[i].Name);
-                for (int j = 0; j < tree.Value.Count(x => Char.IsUpper(x)); j++)
+                List<string> temp = new List<string>();
+                for (int j = 0; j < result.Count; j++)
                 {
-
+                    for (int k = 0; k < result[j].Length; k++)
+                    {
+                        if (Char.IsUpper(result[j][k]))
+                            AddChilder(rules, result[j],k,temp);
+                    }
                 }
+                result = temp;
             }
-            return null;
+            result = result.Distinct().ToList();//убираем повторяющиеся слова           
+            return result.Where(x=>x.IsLower()).ToList();
+        }        
+        private static void AddChilder(List<Rule> rules, string word,int index,List<string> res)
+        {
+            char letter = word[index];
+            word = word.Remove(index, 1);
+            var temp = rules.First(x => x.Name == letter.ToString());
+            for (int i = 0; i < temp.Rules.Count; i++)
+            {
+                res.Add(word.Insert(index, temp.Rules[i]));
+            }
         }
-        
     }
 }

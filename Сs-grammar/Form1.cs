@@ -23,10 +23,15 @@ namespace Сs_grammar
 
         private void button1_Click(object sender, EventArgs e)
         {
+            textBox2.Clear();
             string[] arrstring = textBox1.Text.Replace("\r", "").Split('\n');
             formater(arrstring);
             List<Rule> list = Infrastructure.FillList(arrstring);
             List<string> result = Infrastructure.Search(list, int.Parse(textBox3.Text));
+            foreach (var item in result)
+            {
+                textBox2.Text += item + " ";
+            }
         }
         private void formater(string[] str)
         {
@@ -39,6 +44,11 @@ namespace Сs_grammar
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }
