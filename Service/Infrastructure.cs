@@ -40,20 +40,17 @@ namespace Service
                         if (Char.IsUpper(result[j][k]))
                             AddChilder(rules, result[j],k,temp);
                     }
-                }
+                }                
+                result = temp;
                 foreach (var item in result)
                 {
-                    if(item.IsLower())
+                    if (item.IsLower())
                         words.Add(item);
                 }
-                result = temp;
             }
-            foreach (var item in result)
-            {
-                if (item.IsLower())
-                    words.Add(item);
-            }
-            return words.Distinct().ToList();
+            var temp1 = words.Distinct().Where(x => x.IsNotEpsilon()).Select(x => x= "ε").ToList();
+            var temp2 = words.Distinct().Select(x => x.Replace("ε", "")).ToList();
+            return temp1.Union(temp2).ToList();
         }        
         private static void AddChilder(List<Rule> rules, string word,int index,List<string> res)
         {

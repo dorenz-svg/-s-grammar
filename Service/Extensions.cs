@@ -17,5 +17,16 @@ namespace Service
 			}
 			return true;
 		}
+		public static bool IsNotEpsilon(this string value)
+		{
+			for (int i = 0; i < value.Length; i++)
+			{
+				if (value[i]!= 'ε')
+				{
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 }

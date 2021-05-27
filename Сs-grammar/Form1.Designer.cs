@@ -56,7 +56,7 @@ namespace Сs_grammar
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(157, 151);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "S-Ab|aA|BB\r\nA-SaS|aBb|a\r\nB-aB|aA|Cb\r\nC-Ca|a|bS";
+            this.textBox1.Text = "S-Ab|aA|BB\r\nA-SaS|aBb|a\r\nB-aB|aA|Cb|ε\r\nC-Ca|a|bS";
             // 
             // textBox2
             // 
