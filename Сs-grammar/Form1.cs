@@ -26,6 +26,7 @@ namespace Сs_grammar
             string[] arrstring = textBox1.Text.Replace("\r", "").Split('\n');
             formater(arrstring);
             List<Rule> list = Infrastructure.FillList(arrstring);
+            List<string> result = Infrastructure.Search(list, int.Parse(textBox3.Text));
         }
         private void formater(string[] str)
         {
@@ -35,6 +36,11 @@ namespace Сs_grammar
                 str[i] = str[i].Replace("-", " ");
                 str[i] = str[i].Replace("|", " ");
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

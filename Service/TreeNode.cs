@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rules
+namespace Service
 {
     public class TreeNode<T>
     {

@@ -26,9 +26,19 @@ namespace Service
             }
             return res;
         }
-        public static List<string> Search(List<Rule> rules)
+        public static List<string> Search(List<Rule> rules,in int N)
         {
+            TreeNode<string> tree;
+            for (int i = 0; i < N; i++)
+            {
+                tree = new TreeNode<string>(rules[i].Name);
+                for (int j = 0; j < tree.Value.Count(x => Char.IsUpper(x)); j++)
+                {
+
+                }
+            }
             return null;
         }
+        
     }
 }
